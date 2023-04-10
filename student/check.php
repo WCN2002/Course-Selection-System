@@ -21,7 +21,7 @@
     if(is_array($row)){
         $_SESSION["Username"] = $row['username'];
         $_SESSION["Password"] = $row['password'];
-        header("Location:home.php");
+        header("Location:searchCourse.php");
     } else{
         $_SESSION["error"] = $error;
         header("location: index.php");

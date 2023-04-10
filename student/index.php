@@ -13,8 +13,8 @@
     <div class="login-card">
         <h2>Login</h2>
         <form action="check.php" class="login-form" method="POST">
-            <input type="text" name="Username" placeholder= "Username" required><br>
-            <input type="password" name="Password" placeholder="Password" required><br>
+            <input type="text" name="Username" autocomplete="off" placeholder= "Username" required><br>
+            <input type="password" name="Password" autocomplete="off" placeholder="Password" required><br>
             <input type="submit" name="Login" value="Login"><br>
             <?php
                 if(isset($_SESSION["error"])){
