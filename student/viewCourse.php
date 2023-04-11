@@ -41,7 +41,7 @@
                         <th>Day</th>
                         <th>Time</th>
                         <th>Instructor</th>
-                        <th>Drop Course</th>
+                        <th>Action</th>
                     </tr>
                     </thread>
                     ';
@@ -57,6 +57,7 @@
                             <td>".$row["time"]."</td>
                             <td>".$row["professor"]."</td>
                             <td>
+                                <a href='courseDetail.php?searchPage=0&courseID=".$row["courseID"]."&outline=".$row["outline"]."'>Detail</a>
                                 <a href='dropCourse.php?courseID=".$row["courseID"]."'>Drop</a>
                             <td>
                         </tr>
@@ -95,7 +96,7 @@
                         <th>Time</th>
                         <th>Instructor</th>
                         <th>Position</th>
-                        <th>Cancel</th>
+                        <th>Action</th>
                     </tr>
                     </thread>
                     ';
@@ -119,6 +120,7 @@
                             <td>".$row["professor"]."</td>
                             <td>".$position["position"]."</td>
                             <td>
+                            <a href='courseDetail.php?searchPage=0&courseID=".$row["courseID"]."&outline=".$row["outline"]."'>Detail</a>
                                 <a href='cancelWaitlist.php?courseID=".$row["courseID"]."'>Cancel</a>
                             <td>
                         </tr>

@@ -49,7 +49,7 @@
                             <th>Time</th>
                             <th>Instructor</th>
                             <th>Avaliable Seat</th>
-                            <th>Enrollment</th>
+                            <th>Action</th>
                         </tr>
                         </thread>
                         ';
@@ -66,6 +66,7 @@
                                 <td>".$row["professor"]."</td>
                                 <td>".$row["remainSeat"]."/".$row["maxCapacity"]."</td>
                                 <td>
+                                    <a href='courseDetail.php?searchPage=1&courseID=".$row["courseID"]."&outline=".$row["outline"]."'>Detail</a>
                                     <a href='enroll.php?courseID=".$row["courseID"]."&remainSeat=".$row["remainSeat"]."'>Enroll</a>
                                 <td>
                             </tr>
@@ -98,7 +99,7 @@
                             <th>Time</th>
                             <th>Instructor</th>
                             <th>Avaliable Seat</th>
-                            <th>Enrollment</th>
+                            <th>Action</th>
                         </tr>
                         </thread>
                         ';
@@ -115,6 +116,7 @@
                                 <td>".$row["professor"]."</td>
                                 <td>".$row["remainSeat"]."/".$row["maxCapacity"]."</td>
                                 <td>
+                                    <a href='courseDetail.php?searchPage=1&courseID=".$row["courseID"]."&outline=".$row["outline"]."'>Detail</a>
                                     <a href='enroll.php?courseID=".$row["courseID"]."&remainSeat=".$row["remainSeat"]."'>Enroll</a>
                                 <td>
                             </tr>
