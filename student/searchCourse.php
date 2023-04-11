@@ -16,9 +16,9 @@
     <title>Course</title>
 </head>
 <body>
-    <h1>Welcome, <?php echo $_SESSION['Username']; ?></h1>
-    <h2><a href = "viewCourse.php">View Course</a></h2>
-    <h2><a href = "logout.php">Sign Out</a></h2>
+    <h3>Welcome, <?php echo $_SESSION['Username']; ?></h3>
+    <h3><a href = "viewCourse.php">View Course</a></h3>
+    <h3><a href = "logout.php">Sign Out</a></h3>
     <div class="search-container">
         <form action="searchCourse.php" method="POST">
             <input type="text" name="Search" placeholder="Search Course">
@@ -80,6 +80,7 @@
                         mysqli_free_result($result);
                     }
                 } else{
+                    //show all course for the first time
                     $sql = "SELECT * FROM courses C ORDER BY C.courseID ASC";
                     $stmt = mysqli_prepare($conn, $sql);
                     mysqli_stmt_execute($stmt);

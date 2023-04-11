@@ -16,9 +16,9 @@
     <title>Course</title>
 </head>
 <body>
-    <h1>Welcome, <?php echo $_SESSION['Username']; ?></h1>
-    <h2><a href = "searchCourse.php">Search Course</a></h2>
-    <h2><a href = "logout.php">Sign Out</a></h2>
+    <h3>Welcome, <?php echo $_SESSION['Username']; ?></h3>
+    <h3><a href = "searchCourse.php">Search Course</a></h3>
+    <h3><a href = "logout.php">Sign Out</a></h3>
     <div class="selectedCourse-result">
         <h2>Enrolled Courses</h2>
         <table class="table">
@@ -73,7 +73,7 @@
     </div>
 
     <div class="waitlist-result">
-        <h2>waitlist</h2>
+        <h2>Waitlist</h2>
         <table class="table">
             <?php
                 $username = $_SESSION['Username'];

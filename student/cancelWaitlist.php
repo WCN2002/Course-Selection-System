@@ -1,5 +1,9 @@
 <?php
     session_start();
+    if(!isset($_SESSION['Username'])) {
+        header("location: index.php");
+        exit();
+    }
     echo "<a href='viewCourse.php'>Return</a><br>";
     if (isset($_GET["courseID"])){
         $courseID = $_GET["courseID"];
@@ -17,6 +21,6 @@
     
         mysqli_stmt_close($stmt);
         mysqli_close($conn);
-        }
+    }
 
 ?>

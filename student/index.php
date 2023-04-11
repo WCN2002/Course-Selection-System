@@ -17,6 +17,7 @@
             <input type="password" name="Password" autocomplete="off" placeholder="Password" required><br>
             <input type="submit" name="Login" value="Login"><br>
             <?php
+                // if the username or password is invalid, error message will be shown 
                 if(isset($_SESSION["error"])){
                     $error = $_SESSION["error"];
                     echo "<span>$error</span>";
