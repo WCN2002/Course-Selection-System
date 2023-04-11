@@ -19,7 +19,7 @@
                 <th>Course ID</th>
                 <th>Course Name</th>
                 <th>Instructor</th>
-                <th>Capacity</th>
+                <th>Remaining Seats</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -43,8 +43,8 @@
                 echo "<tr>
                     <td>" . $row["courseID"] . "</td>
                     <td>" . $row["courseName"] . "</td>
-                    <td>" . $row["professor"] . "</td>
-                    <td>" . $row["maxCapacity"] . "</td>
+                    <td>" . $row["professor"] .  "</td>
+                    <td> " . $row["remainSeat"] .  "/" . $row["maxCapacity"] ." </td>
                     <td>
                         <a class='btn btn-primary btn-sm' href='/admin/edit.php?courseID=$row[courseID]'>Edit Outline</a>
                         <a class='btn btn-danger btn-sm' href='/admin/deleteCourse.php?courseID=$row[courseID]'>Delete</a>
