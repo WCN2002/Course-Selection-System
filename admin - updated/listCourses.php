@@ -44,7 +44,7 @@
                     <td>" . $row["courseID"] . "</td>
                     <td>" . $row["courseName"] . "</td>
                     <td>" . $row["professor"] .  "</td>
-                    <td> " . $row["remainSeat"] .  "/" . $row["maxCapacity"] ." </td>
+                    <td>" . $row["remainSeat"] .  "  /  " . $row["maxCapacity"] ." </td>
                     <td>
                         <a class='btn btn-primary btn-sm' href='/admin/edit.php?courseID=$row[courseID]'>Edit Outline</a>
                         <a class='btn btn-danger btn-sm' href='/admin/deleteCourse.php?courseID=$row[courseID]'>Delete</a>
