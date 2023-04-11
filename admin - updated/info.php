@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' ){
 </head>
 <body>
     <div class="container my-5">
-        <h2> <?php echo $courseName; ?> | Course Information </h2>
+        <h2> <?php echo $courseID; ?> | Course Information </h2>
         <div>
           <b>Course Name: <b> <? echo $courseName?><br>
           <b>Location: </b> <? echo $location?><br>

@@ -10,7 +10,7 @@
 <body style="margin: 50px;">
     <h1>Student Users</h1>
     <br>
-    <a class='btn btn-secondary btn-sm' href='http://localhost/index.php'>Return</a>
+    <a class='btn btn-secondary btn-sm' href='http://localhost/admin/listCourses'>Return</a>
     <br><br>
     <table class="table">
         <thead>
