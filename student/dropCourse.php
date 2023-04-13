@@ -4,8 +4,8 @@
         header("location: index.php");
         exit();
     }
-
-    echo "<a href='viewCourse.php'>Return</a><br>";
+    ?><style><?php include 'style.css';?></style><?php
+    echo "<a class='return-btn' href='viewCourse.php'>Return</a><br>";
 
     if (isset($_GET["courseID"])){
         $courseID = $_GET["courseID"];
@@ -18,6 +18,7 @@
         mysqli_stmt_bind_param($stmt, "s", $courseID);
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
+        echo "<section class='result-page-content'>";
         if (mysqli_num_rows($result) > 0){
             // there is student waiting for the dropped course
             // add the first student in waitlist to the course 
@@ -44,11 +45,12 @@
         $stmt = mysqli_prepare($conn, $sql);
         mysqli_stmt_bind_param($stmt, "is", $username, $courseID);
         if(mysqli_stmt_execute($stmt)){
-            echo "Success";
+            echo "<h2>Success</h2>";
         } else {
-            echo "Oops! Something go wrong...";
+            echo "<h2>Oops! Something go wrong...</h2>";
         }
-    
+        echo "</section>";
+
         mysqli_stmt_close($stmt);
         mysqli_close($conn);
         }

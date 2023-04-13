@@ -127,3 +127,21 @@ table tbody tr a{
 table tbody tr a:hover{
     background: rgb(152, 168, 127);
 }
+
+.return-btn{
+    padding:10px;
+    background: rgb(182, 202, 152);
+    outline: none;
+    border-radius: 6px;
+    transition: .5s;
+    text-decoration: none;
+    color:white;
+}
+
+.return-btn:hover{
+    background: rgb(152, 168, 127);
+}
+
+.result-page-content{
+    padding-top: 50px;
+}

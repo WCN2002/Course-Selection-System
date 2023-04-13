@@ -4,7 +4,8 @@
         header("location: index.php");
         exit();
     }
-    echo "<a href='searchCourse.php'>Return</a><br>";
+    ?><style><?php include 'style.css';?></style><?php
+    echo "<a class='return-btn' href='searchCourse.php'>Return</a><br>";
     if (isset($_GET["courseID"])){
         $courseID = $_GET["courseID"];
         $remainSeat = $_GET["remainSeat"];
@@ -17,6 +18,8 @@
         mysqli_stmt_bind_param($stmt, "is", $username, $courseID);
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
+
+        echo "<section class='result-page-content'>";
         if(mysqli_num_rows($result) == 0){
             // if user didn't enroll the course before
             if ($remainSeat > 0){
@@ -25,13 +28,13 @@
                 $stmt = mysqli_prepare($conn, $sql);
                 mysqli_stmt_bind_param($stmt, "is", $username, $courseID);
                 if(mysqli_stmt_execute($stmt)){
-                    echo "Success";
+                    echo "<h2>Success</h2>";
                     $sql = "UPDATE courses SET remainSeat = remainSeat - 1 WHERE courseID = ?";
                     $stmt = mysqli_prepare($conn, $sql);
                     mysqli_stmt_bind_param($stmt, "s", $courseID);
                     mysqli_stmt_execute($stmt);
                 } else {
-                    echo "You already enrolled the course!";
+                    echo "<h2>You already enrolled the course!</h2>";
                 }
                 mysqli_stmt_close($stmt);
             } else{
@@ -48,20 +51,21 @@
                     $stmt = mysqli_prepare($conn, $sql);
                     mysqli_stmt_bind_param($stmt, "is", $username, $courseID);
                     if(mysqli_stmt_execute($stmt)){
-                        echo "Success! You are now on the waitlist";
+                        echo "<h2>Success! You are now on the waitlist</h2>";
                     }
                 }else {
                     // if user is in the waitlist
-                    echo "You are already in the waitlist!";
+                    echo "<h2>You are already in the waitlist!</h2>";
                 }
                  
                 mysqli_stmt_close($stmt);
             }
         } else{
             // if user enrolled the course before
-            echo "You already enrolled the course!";
+            echo "<h2>You already enrolled the course!</h2>";
         }
-         
+        echo "</section>";
+
         mysqli_close($conn);
     }
 

@@ -4,6 +4,7 @@
         header("location: index.php");
         exit();
     }
+    ?><style><?php include 'style.css';?></style><?php
     $lastPage = "viewCourse.php";
     if (isset($_GET["searchPage"]))
     {
@@ -12,11 +13,13 @@
         }
     }
 
-    echo "<a href='".$lastPage."'>Return</a><br>";
+    echo "<a class='return-btn' href='".$lastPage."'>Return</a><br>";
     if (isset($_GET["courseID"]) && isset($_GET["courseID"])){
         $courseID = $_GET["courseID"];
         $outline = $_GET["outline"];
+        echo "<section class='result-page-content'>";
         echo "<h2>".$courseID."</h2>";
         echo "<p>".$outline."</p>";
+        echo "</section>";
     }
 ?>
