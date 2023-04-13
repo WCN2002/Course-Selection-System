@@ -1,0 +1,147 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: beige;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 50px;
+    background: rgb(182, 202, 152);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 99;
+}
+
+.welcome-message{
+    font-size: 1em;
+    color: white;
+}
+
+.navigation a{
+    position: relative;
+    font-size: 1em;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 40px;
+    transition: .5s;
+}
+
+.navigation a:hover{
+    color:grey;
+}
+
+.navigation a.btn-logout{
+    padding: 5px;
+    background: transparent;
+    border: 2px solid white;
+    outline: none;
+    border-radius: 6px;
+    transition: .5s;
+}
+
+.navigation a.btn-logout:hover{
+    background: rgb(152, 168, 127);
+    color: white;
+}
+
+.page-content{
+    padding-top: 80px;
+}
+
+.search-container form{
+    width: 100%;
+    max-width: 600px;
+    height: 40px;
+    display: flex;
+    padding: 5px 10px;
+    border-radius: 6px;
+    background: white;
+}
+
+.search-container input{
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 20px;
+}
+
+.search-container button{
+    height: 100%;
+    background: rgb(182, 202, 152);
+    color:white;
+    border: none;
+    border-radius: 7px;
+    padding: 5px;
+    text-align: center;
+    font-size: 1em;
+    cursor: pointer;
+    transition: .5s;
+}
+.search-container button:hover{
+    background: rgb(152, 168, 127);
+}
+
+table{
+    border-collapse: collapse;
+    margin: 25px 0px;
+    font-size: 1.1em;
+    min-width: 600px;
+}
+
+table thead tr{
+    background-color: rgb(203, 223, 171);
+    color: black;
+    text-align: left;
+    font-weight: bold;
+}
+
+table th, td{
+    padding: 10px 12px;
+}
+
+table tbody tr{
+    background-color: rgb(250, 250, 234);
+}
+
+table tbody tr a{
+    padding:2px;
+    background: rgb(182, 202, 152);
+    outline: none;
+    border-radius: 6px;
+    transition: .5s;
+    text-decoration: none;
+    color:white;
+}
+
+table tbody tr a:hover{
+    background: rgb(152, 168, 127);
+}
+
+.return-btn{
+    padding:10px;
+    background: rgb(182, 202, 152);
+    outline: none;
+    border-radius: 6px;
+    transition: .5s;
+    text-decoration: none;
+    color:white;
+}
+
+.return-btn:hover{
+    background: rgb(152, 168, 127);
+}
+
+.result-page-content{
+    padding-top: 50px;
+}
