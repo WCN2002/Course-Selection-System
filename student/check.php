@@ -6,7 +6,7 @@
         $Username = $_POST['Username'];
         $Password = $_POST['Password'];
     }
-    $sql = "SELECT * FROM students WHERE username = ? AND password = ? ";
+    $sql = "SELECT * FROM users WHERE username = ? AND password = ? ";
     $stmt = mysqli_prepare($conn, $sql);
     mysqli_stmt_bind_param($stmt, "ss", $Username, $Password);
     mysqli_stmt_execute($stmt);
@@ -19,9 +19,13 @@
     $error = "Invalid username or password!";
 
     if(is_array($row)){
-        $_SESSION["Username"] = $row['username'];
-        $_SESSION["Password"] = $row['password'];
-        header("Location:searchCourse.php");
+        if ($row['isAdmin']){
+            
+        } else{
+            $_SESSION["Username"] = $row['username'];
+            $_SESSION["Password"] = $row['password'];
+            header("Location:searchCourse.php");
+        }
     } else{
         $_SESSION["error"] = $error;
         header("location: index.php");
