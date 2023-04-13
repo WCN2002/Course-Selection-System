@@ -1,0 +1,1 @@
+Save files in folder called admin. Main file is listCourses.php
