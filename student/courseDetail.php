@@ -18,7 +18,7 @@
         $courseID = $_GET["courseID"];
         $outline = $_GET["outline"];
         echo "<section class='result-page-content'>";
-        echo "<h2>".$courseID."</h2>";
+        echo "<h2>".$courseID."</h2><br>";
         echo "<p>".$outline."</p>";
         echo "</section>";
     }
