@@ -75,7 +75,8 @@
                     $error = $_SESSION["error"];
                     echo "<span>$error</span>";
                 }
-            ?>  
+            ?>
+        <p>Don't have an account? <a href="loginregister.php">Register one!</a></p>
         </form>
     </div>
 </body>
