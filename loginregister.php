@@ -26,19 +26,23 @@
           }
 
           require_once "database.php";
-          $sql = "SELECT * FROM users WHERE email = ?";
+          $sql = "SELECT * FROM users WHERE email = ? OR username = ?";
           $stmt = mysqli_stmt_init($conn);
           $prepareStmt = mysqli_stmt_prepare($stmt, $sql);
-          if ($prepareStmt){
-            mysqli_stmt_bind_param($stmt, "s", $email);
-            mysqli_stmt_execute($stmt);
-            $result = mysqli_stmt_get_result($stmt);
-            $rowCount = mysqli_num_rows($result);
-            if ($rowCount > 0){
+          mysqli_stmt_bind_param($stmt,"ss", $email, $username);
+          mysqli_stmt_execute($stmt);
+          $result = mysqli_stmt_get_result($stmt);
+          $rowCount = mysqli_num_rows($result);
+          if ($rowCount > 0){
+            while($row = mysqli_fetch_assoc($result)) {
+            if($row["email"] == $email){
               array_push($errors, "Email already exists!");
+              }
+            if($row["username"] == $username){
+              array_push($errors, "Username already exists!");
+              }
             }
           }
-          
           if (empty($errors)){
             require_once "database.php";
             $sql = "INSERT INTO users (username, firstName, lastName, email, password, isAdmin) VALUES (?, ?, ?, ?, ?, ?)";
