@@ -60,7 +60,7 @@ header {
 
 .search-container form{
     width: 100%;
-    max-width: 600px;
+    max-width: 800px;
     height: 40px;
     display: flex;
     padding: 5px 10px;

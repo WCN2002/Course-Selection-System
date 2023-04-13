@@ -18,11 +18,11 @@ $pdo=new PDO('mysql:host=localhost;port=3306;dbname=cusis', $username, $password
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET' ){
     if ( !isset($_GET["courseID"])){
-        header("location: /admin/listCourses.php");
+        header("location: listCourses.php");
         exit;
     }
     $courseID = $_GET["courseID"];
-    $sql = "SELECT * FROM courses WHERE courseID=$courseID";
+    $sql = "SELECT * FROM courses WHERE courseID='$courseID'";
     if($result = $connection->query($sql)) {
       $result = $connection->query($sql);
       $row = $result->fetch_assoc();

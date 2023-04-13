@@ -19,7 +19,7 @@ $pdo=new PDO('mysql:host=localhost;port=3306;dbname=cusis', $username, $password
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET' ){
     if ( !isset($_GET["courseID"])){
-        header("location: /admin/listCourses.php");
+        header("location: listCourses.php");
         exit;
     }
 }
@@ -61,14 +61,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' ){
         <a class='btn btn-secondary btn-sm' href='listCourses.php'>Return</a>
         <br><br>
         <div>
-          <b>Course Name: </b> <? echo $courseName?><br>
-          <b>Location: </b> <? echo $location?><br>
-          <b>Department: </b> <? echo $department?><br>
-          <b>Professor: </b> <? echo $professor?><br>
-          <b>Maximum Capacity: </b> <? echo $maxCapacity?><br>
-          <b>Seats Remaining: </b> <? echo $remainSeat?><br>
-          <b>Day and Time: </b> <? echo $day ." ". $time?><br>
-          <b>Course Outline: </b> <? echo $outline?><br>
+          <b>Course Name: </b> <?php echo $courseName?><br>
+          <b>Location: </b> <?php echo $location?><br>
+          <b>Department: </b> <?php echo $department?><br>
+          <b>Professor: </b> <?php echo $professor?><br>
+          <b>Maximum Capacity: </b> <?php echo $maxCapacity?><br>
+          <b>Seats Remaining: </b> <?php echo $remainSeat?><br>
+          <b>Day and Time: </b> <?php echo $day ." ". $time?><br>
+          <b>Course Outline: </b> <?php echo $outline?><br>
         </div>
     </div>
 </body>

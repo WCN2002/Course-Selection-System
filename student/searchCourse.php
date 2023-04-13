@@ -29,6 +29,8 @@
         <div class="search-container">
             <form action="searchCourse.php" method="POST">
                 <input type="text" name="Search" placeholder="Search Course">
+                <input type="text" name="Search-Time" placeholder="Time">
+                <input type="text" name="Search-Department" placeholder="Department">
                 <button type="submit" name="Submit-search">Search</button>
             </form>
         </div>
@@ -37,10 +39,17 @@
                 <?php
                     if (isset($_POST['Submit-search'])){
                         $Search = $_POST['Search'];
+                        $SearchTime = $_POST['Search-Time'];
+                        $SearchDep = $_POST['Search-Department'];
                         $Data = "%$Search%";
-                        $sql = "SELECT * FROM courses WHERE courseID LIKE ? OR courseName LIKE ? OR location LIKE ? OR department LIKE ? OR professor LIKE ? OR day LIKE ? OR time LIKE ?";
+                        $sql = "SELECT * FROM courses WHERE (courseID LIKE '$Data' OR courseName LIKE '$Data' OR location LIKE '$Data' OR professor LIKE '$Data' OR day LIKE '$Data')";
+                        if($SearchTime != ""){
+                            $sql .= "AND time LIKE '%$SearchTime%'";
+                        }
+                        if($SearchDep != ""){
+                            $sql .= "AND department LIKE '%$SearchTime%'";
+                        }
                         $stmt = mysqli_prepare($conn, $sql);
-                        mysqli_stmt_bind_param($stmt, "sssssss", $Data, $Data, $Data, $Data, $Data, $Data, $Data);
                         mysqli_stmt_execute($stmt);
                         $result = mysqli_stmt_get_result($stmt);
 
