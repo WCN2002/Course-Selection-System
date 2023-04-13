@@ -8,6 +8,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 </head>
 <body style="margin: 50px;">
+  <div>
+    <p style="text-align:right;">
+    <a class='btn btn-dark btn-sm' href='http://localhost/index.php'>Logout</a>
+  </p>
+  </div>
+    <br>
     <h1>Admin</h1>
     <br>
     <a class='btn btn-secondary btn-sm' href='http://localhost/admin/addCourse.php'>Add New Course</a>
