@@ -51,7 +51,7 @@
                     $stmt = mysqli_prepare($conn, $sql);
                     mysqli_stmt_bind_param($stmt, "is", $username, $courseID);
                     if(mysqli_stmt_execute($stmt)){
-                        echo "<h2>Success! You are now on the waitlist</h2>";
+                        echo "<h2>The course is full and cannot be selected. You have been added to the waitlist.</h2>";
                     }
                 }else {
                     // if user is in the waitlist
