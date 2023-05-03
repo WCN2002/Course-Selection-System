@@ -1,3 +1,5 @@
+/* PAGE FOR SEEING ALL STUDENTS AND THEIR INFORMATION */
+
 <?php
     session_start();
 
@@ -33,6 +35,8 @@
         </thead>
 
         <tbody>
+            
+           // LOGIN TO DATABASE AND ESTABLISH CONNECTION
           <?php
             $servername = "localhost";
             $username = "root";
@@ -45,9 +49,12 @@
             if ($connection->connect_error){
                 die("Connection failed: " . $connection->connect_error);
             }
-
+        
+            // GET ALL STUDENT ENTRIES IN ASCENDING ORDER
             $sql = "SELECT * FROM users WHERE isAdmin=0 ORDER BY username ASC";
             if($result = $connection->query($sql)){
+                
+                // DISPLAY STUDENT ENTRIES IN TABLE FORMAT
             while ($row = $result->fetch_assoc()){
                 echo "<tr>
                     <td>" . $row["username"] . "</td>
