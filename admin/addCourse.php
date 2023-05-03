@@ -1,4 +1,5 @@
 <?php
+    // INITIATE SESSION
     session_start();
 
     if(!isset($_SESSION['Username'])) {
@@ -8,6 +9,7 @@
 ?>
 
 <?php
+// LOGIN FOR DATABASE
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -28,6 +30,7 @@ $outline = "";
 
 $errorMessage = "";
 
+// HTML FORMS FOR NEW COURSE ENTRY
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $courseID = $_POST["courseID"];
     $courseName = $_POST["courseName"];
@@ -39,13 +42,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $time = $_POST["time"];
     $outline = $_POST["outline"];
 
+    // TEST IF ANY FIELD IS EMPTY
     do {
         if(empty($courseID) || empty($courseName) || empty($location) || empty($department) || empty($professor) || empty($maxCapacity) || empty($day)|| empty($time)|| empty($outline)){
             $errorMessage = "All the fields are required";
             break;
         }
 
-        // check for duplicate courseID
+        // CHECK FOR DUPLICATE COURSEID
         $ID = $_POST["courseID"];
         $sql = "SELECT * FROM courses WHERE courseID = :zip";
         $stmt = $pdo->prepare($sql);
@@ -56,12 +60,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
           $errorMessage = "Course ID already exists";
           break;
         }
-
+        
+        // CHECK IF CAPACITY FIELD IS A NUMBER
         if(!is_numeric($maxCapacity)){
             $errorMessage = "Capacity must be a number";
             break;
         }
-
+        
+        INSERT ENTRY INTO DATABASE
         $sql = "INSERT INTO courses (courseID, courseName, location, department, professor, maxCapacity, remainSeat, day, time, outline)
                 VALUES ('$courseID', '$courseName', '$location', '$department', '$professor', '$maxCapacity', '$maxCapacity', '$day', 'time', '$outline')";
         $result = $connection->query($sql);
@@ -74,6 +80,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 }
 ?>
 
+// DOCUMENT STYLE
 <!DOCTYPE html>
 <html lang="en">
 <head>
