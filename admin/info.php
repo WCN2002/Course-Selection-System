@@ -1,5 +1,7 @@
+/* HTML PAGE FOR ADMIN USERS TO SEE ALL INFORMATION FOR A COURSE */
+
 <?php
-    session_start();
+    session_start(); // START SESSION
 
     if(!isset($_SESSION['Username'])) {
         header("location: ../index.php");
@@ -7,6 +9,7 @@
     }
 ?>
 
+// LOGIN TO DATABASE AND ESTABLISH CONNECTION
 <?php
 $servername = "localhost";
 $username = "root";
@@ -16,7 +19,7 @@ $database = "cusis";
 $connection = new mysqli($servername, $username, $password, $database);
 $pdo=new PDO('mysql:host=localhost;port=3306;dbname=cusis', $username, $password);
 
-
+// ERROR WITH GET - RETURN TO MAIN PAGE
 if ($_SERVER['REQUEST_METHOD'] == 'GET' ){
     if ( !isset($_GET["courseID"])){
         header("location: listCourses.php");
@@ -24,13 +27,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' ){
     }
 }
 
+    // RETRIEVE INFORMATION FOR COURSEID FROM DATABASE
     $courseID = $_GET["courseID"];
     $sql = "SELECT * FROM courses WHERE courseID = :zip";
     $stmt = $pdo->prepare($sql);
     $stmt->execute(array(
         ':zip' => $courseID ));
     $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+      
+// POST INFORMATION
       $courseID = $row[0]["courseID"];
       $courseName = $row[0]["courseName"];
       $location = $row[0]["location"];
