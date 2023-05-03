@@ -1,5 +1,7 @@
+/* ENABLES EDITING OUTLINE OF COURSE */
+
 <?php
-    session_start();
+    session_start(); // START SESSION
 
     if(!isset($_SESSION['Username'])) {
         header("location: ../index.php");
@@ -7,6 +9,7 @@
     }
 ?>
 
+// LOGIN TO DATABASE AND ESTABLISH CONNECTION
 <?php
 $servername = "localhost";
 $username = "root";
@@ -16,11 +19,13 @@ $database = "cusis";
 $connection = new mysqli($servername, $username, $password, $database);
 $pdo=new PDO('mysql:host=localhost;port=3306;dbname=cusis', $username, $password);
 
+// IF ANY ERRORS, RETURN TO MAIN PAGE
 if ($_SERVER['REQUEST_METHOD'] == 'GET' ){
     if ( !isset($_GET["courseID"])){
         header("location: listCourses.php");
         exit;
     }
+    
     $courseID = $_GET["courseID"];
     $sql = "SELECT * FROM courses WHERE courseID='$courseID'";
     if($result = $connection->query($sql)) {
@@ -34,6 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' ){
   }
 }
 
+// UPDATE THE OUTLINE IN DATABASE
 if(isset($_POST['outline'])){
     $courseID = $_GET["courseID"];
     $outline = $_POST["outline"];
@@ -42,6 +48,7 @@ if(isset($_POST['outline'])){
     $stmt->execute(array(
         ':zip' => $courseID,
         ':outline' => $_POST['outline']));
+    // RETURN TO MAIN PAGE
     header("Location: listCourses.php");
 }
 ?>
