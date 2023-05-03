@@ -1,5 +1,7 @@
+/* ENABLES DELETE STUDENT USER FEATURE FOR ADMIN USERS */
+
 <?php
-    session_start();
+    session_start(); // START SESSION
 
     if(!isset($_SESSION['Username'])) {
         header("location: ../index.php");
@@ -20,6 +22,7 @@
 Hello
 </body>
 
+// LOGIN TO DATABASE
 <?php
   $servername = "localhost";
   $username = "root";
@@ -27,14 +30,16 @@ Hello
   $database = "cusis";
   $pdo=new PDO('mysql:host=localhost;port=3306;dbname=cusis', $username, $password);
 
-// sqlite_changes
-  $username = $_GET["username"];
+  $username = $_GET["username"]; //GET USERNAME OF STUDENT FROM HEADER
+    
+  // DELETE STUDENT FROM DATABASE
   $sql = "SELECT * FROM enrolment WHERE username = :zip";
   $stmt = $pdo->prepare($sql);
   $stmt->execute(array(
       ':zip' => $username ));
       $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+// WAITLIST FUNCTIONALITY
+ // FOR EACH COURSE THE STUDENT IS ENROLLED IN, CHECK IF THERE ARE OTHER STUDENTS IN THE WAITLIST
   foreach($rows as $row) {
     $courseID = $row["courseID"];
     echo $courseID;
@@ -44,7 +49,8 @@ Hello
         ':zip' => $courseID));
         echo $courseID;
     $row_waitlist = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+    
+    // IF THERE ARE STUDENTS IN THE WAITLIST, ENROL THE STUDENT BY INSERTING ENTRY INTO Enrolment TABLE
     if(count($row) > 0) {
       $studentToAdd = $row_waitlist[0]["username"];
       $sql = "INSERT INTO enrolment (courseID, username) VALUES (:courseID, :username)";
@@ -52,7 +58,8 @@ Hello
       $stmt->execute(array(
           ':courseID' => $courseID,
           ':username' => $studentToAdd));
-
+        
+        // DELETE THE NEWLY ADDED STUDENT FROM THE WAITLIST TABLE IN DATABASE
       $sql = "DELETE FROM waitlist WHERE username = :username AND courseID = :courseID";
       $stmt = $pdo->prepare($sql);
       $stmt->execute(array(
@@ -60,6 +67,7 @@ Hello
           ':username' => $studentToAdd));
     }
 
+     // IF THERE ARE NO STUDENTS WAITING FOR THE COURSE, THEN THE CAPACITY SHOULD INCREASE BY 1 SEAT
     else {
       $sql = "UPDATE courses SET remainSeat = remainSeat + 1 WHERE courseID = :courseID";
       $stmt = $pdo->prepare($sql);
