@@ -1,3 +1,5 @@
+/* MAIN ADMIN PAGE - LISTING ALL THE COURSES */
+
 <?php
     session_start();
 
@@ -40,6 +42,7 @@
         </thead>
 
         <tbody>
+            // LOGIN TO DATABASE AND ESTABLISH CONNECTION
             <?php
             $servername = "localhost";
             $username = "root";
@@ -52,8 +55,10 @@
                 die("Connection failed: " . $connection->connect_error);
             }
 
+            // RETRIEVE ENTRIES FOR ALL COURSES IN ASCENDING ORDER OF COURSEIF
             $sql = "SELECT * FROM courses ORDER BY courseID ASC";
             if($result = $connection->query($sql)){
+             // POST INFORMATION IN TABLE FORMAT
             while ($row = $result->fetch_assoc()){
                 echo "<tr>
                     <td>" . $row["courseID"] . "</td>
@@ -61,6 +66,7 @@
                     <td>" . $row["professor"] .  "</td>
                     <td>" . $row["remainSeat"] .  "  /  " . $row["maxCapacity"] ." </td>
                     <td>
+                    // BUTTONS FOR DIFFERENT FEATURES
                         <a class='btn btn-primary btn-sm' href='edit.php?courseID=$row[courseID]'>Edit Outline</a>
                         <a class='btn btn-danger btn-sm' href='deleteCourse.php?courseID=$row[courseID]'>Delete</a>
                         <a class='btn btn-success btn-sm' href='info.php?courseID=$row[courseID]'>See Info</a>
