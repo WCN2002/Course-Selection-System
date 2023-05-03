@@ -1,3 +1,5 @@
+/* THIS IS A HTML PAGE FOR ADDING COURSES AS PART OF THE ADMIN USER FUNCTIONALITY */
+
 <?php
     // INITIATE SESSION
     session_start();
@@ -18,6 +20,7 @@ $database = "cusis";
 $connection = new mysqli($servername, $username, $password, $database);
 $pdo=new PDO('mysql:host=localhost;port=3306;dbname=cusis', $username, $password);
 
+// INITIALISE VARIABLES
 $courseID = "";
 $courseName = "";
 $location = "";
