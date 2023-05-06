@@ -1,3 +1,5 @@
+/* This the page showing the course outline */
+
 <?php
     session_start();
     if(!isset($_SESSION['Username'])) {
