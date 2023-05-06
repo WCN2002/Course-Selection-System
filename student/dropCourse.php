@@ -1,3 +1,5 @@
+/* This is called when a student clicks the drop course button.  It will remove the student from the course and add the first student in waitlist to the course if there is one. */
+
 <?php
     session_start();
     if(!isset($_SESSION['Username'])) {
