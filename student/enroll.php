@@ -1,3 +1,5 @@
+/* This is called when students click the enroll button. If the course has avaliable seat, it will add student to the course, else, add student to the course waitlist.  */
+
 <?php
     session_start();
     if(!isset($_SESSION['Username'])) {
