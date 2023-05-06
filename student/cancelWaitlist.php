@@ -1,4 +1,4 @@
-/*This is called for deleting a student from the waitlist*/
+/* This is called for deleting a student from the waitlist */
 
 <?php
     session_start();
