@@ -1,3 +1,5 @@
+/* This is the student profile page which show the student enrolled courses and courses that the student is in the waitlist. */
+
 <?php
     session_start();
 
