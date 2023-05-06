@@ -1,3 +1,5 @@
+/* This is the course browsing page for student. Students can search, view details, and enroll the courses */
+
 <?php
     session_start();
 
